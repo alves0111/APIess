@@ -1,0 +1,11 @@
+{
+  "Integracao": {
+    "DbfPath": "C:\\CASH",
+    "TempPath": "C:\\ERP\\TEMP",
+    "Modulos": {
+      "Clientes": true,
+      "Produtos": true,
+      "Pedidos": false
+    }
+  }
+}
