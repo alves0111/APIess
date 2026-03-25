@@ -4,23 +4,64 @@ using Microsoft.Extensions.Options;
 public class ProdService
 {
     private readonly ProdIntegration _integration;
+    private readonly PostgresUpsertService _upsert;
     private readonly IntegracaoConfig _config;
+    private readonly ILogger<ProdService> _logger;
 
     public ProdService(
         ProdIntegration integration,
-        IOptions<IntegracaoConfig> config)
+        PostgresUpsertService upsert,
+        IOptions<IntegracaoConfig> config,
+        ILogger<ProdService> logger)
     {
         _integration = integration;
+        _upsert = upsert;
         _config = config.Value;
+        _logger = logger;
     }
 
-    public IReadOnlyList<ProdDto> ObterProdutos(int skip = 0, int take = 200)
+    public async Task<SyncResult> SincronizarProdutosAsync(CancellationToken cancellationToken = default)
     {
         if (!_config.Modulos.Produtos)
+            throw new InvalidOperationException("O módulo de produtos está desabilitado na configuração.");
+
+        var startedAt = DateTime.UtcNow;
+        var skip = 0;
+        var take = _config.SyncBatchSize;
+        var total = 0;
+        var batches = 0;
+
+        while (true)
         {
-            throw new InvalidOperationException("Módulo de produtos desabilitado.");
+            var lote = _integration.BuscarProdutos(skip, take);
+            if (lote.Count == 0)
+                break;
+
+            await _upsert.UpsertBatchAsync("meuerp", "produtos", new[] { "COD_PRO" }, lote, cancellationToken);
+
+            total += lote.Count;
+            batches++;
+            skip += lote.Count;
+
+            _logger.LogInformation(
+                "Lote de produtos sincronizado. Lote: {Lote}. Registros no lote: {RegistrosLote}. Total: {Total}",
+                batches,
+                lote.Count,
+                total);
+
+            if (lote.Count < take)
+                break;
         }
 
-        return _integration.BuscarProdutos(skip, take);
+        return new SyncResult
+        {
+            Modulo = "produtos",
+            Schema = "meuerp",
+            Tabela = "produtos",
+            RegistrosProcessados = total,
+            LotesProcessados = batches,
+            IniciadoEmUtc = startedAt,
+            FinalizadoEmUtc = DateTime.UtcNow
+        };
     }
 }

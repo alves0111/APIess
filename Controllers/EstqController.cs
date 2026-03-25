@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[Route("api/estoque")]
+[Route("api/integracao/estoques")]
 public class EstqController : ControllerBase
 {
     private readonly EstqService _service;
@@ -11,17 +11,10 @@ public class EstqController : ControllerBase
         _service = service;
     }
 
-    [HttpGet]
-    public IActionResult Get([FromQuery] int skip = 0, [FromQuery] int take = 200)
+    [HttpPost("sync")]
+    public async Task<IActionResult> Sync(CancellationToken cancellationToken)
     {
-        var estq = _service.ObterEstq(skip, take);
-
-        return Ok(new
-        {
-            skip,
-            take,
-            count = estq.Count,
-            items = estq
-        });
+        var result = await _service.SincronizarEstoquesAsync(cancellationToken);
+        return Ok(result);
     }
 }

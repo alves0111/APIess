@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[Route("api/clientes")]
+[Route("api/integracao/clientes")]
 public class ClienteController : ControllerBase
 {
     private readonly ClienteService _service;
@@ -11,17 +11,10 @@ public class ClienteController : ControllerBase
         _service = service;
     }
 
-    [HttpGet]
-    public IActionResult Get([FromQuery] int skip = 0, [FromQuery] int take = 200)
+    [HttpPost("sync")]
+    public async Task<IActionResult> Sync(CancellationToken cancellationToken)
     {
-        var clientes = _service.ObterClientes(skip, take);
-
-        return Ok(new
-        {
-            skip,
-            take,
-            count = clientes.Count,
-            items = clientes
-        });
+        var result = await _service.SincronizarClientesAsync(cancellationToken);
+        return Ok(result);
     }
 }

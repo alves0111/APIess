@@ -13,17 +13,13 @@ public class EstqIntegration
         _logger = logger;
     }
 
-    public List<EstqDto> BuscarEstq(int skip = 0, int take = 200)
+    public List<EstqDto> BuscarEstq(int skip = 0, int take = 500)
     {
         if (skip < 0)
-        {
             throw new ArgumentOutOfRangeException(nameof(skip), "O parâmetro skip não pode ser negativo.");
-        }
 
-        if (take <= 0 || take > 1000)
-        {
-            throw new ArgumentOutOfRangeException(nameof(take), "O parâmetro take deve estar entre 1 e 1000.");
-        }
+        if (take <= 0 || take > 5000)
+            throw new ArgumentOutOfRangeException(nameof(take), "O parâmetro take deve estar entre 1 e 5000.");
 
         var estoques = new List<EstqDto>(take);
         var index = 0;
@@ -31,20 +27,16 @@ public class EstqIntegration
         foreach (var row in _dbf.LerTabela("ESTOQUES"))
         {
             if (index++ < skip)
-            {
                 continue;
-            }
 
             estoques.Add(DbfMapper.MapRow<EstqDto>(row));
 
             if (estoques.Count >= take)
-            {
                 break;
-            }
         }
 
         _logger.LogInformation(
-            "Consulta de estoque concluída. Skip: {Skip}. Take: {Take}. Retornados: {Retornados}",
+            "Lote de estoques lido do DBF. Skip: {Skip}. Take: {Take}. Retornados: {Retornados}",
             skip,
             take,
             estoques.Count);

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[Route("api/produtos")]
+[Route("api/integracao/produtos")]
 public class ProdController : ControllerBase
 {
     private readonly ProdService _service;
@@ -11,17 +11,10 @@ public class ProdController : ControllerBase
         _service = service;
     }
 
-    [HttpGet]
-    public IActionResult Get([FromQuery] int skip = 0, [FromQuery] int take = 200)
+    [HttpPost("sync")]
+    public async Task<IActionResult> Sync(CancellationToken cancellationToken)
     {
-        var produtos = _service.ObterProdutos(skip, take);
-
-        return Ok(new
-        {
-            skip,
-            take,
-            count = produtos.Count,
-            items = produtos
-        });
+        var result = await _service.SincronizarProdutosAsync(cancellationToken);
+        return Ok(result);
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "F4jN57W4kpQ=",
+  "dgSpecHash": "WHeoS1ierpM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Guilherme-pc\\Desktop\\MeuERP.Api2\\MeuERP.Api2.csproj",
+  "projectFilePath": "C:\\Users\\Guilherme-pc\\Desktop\\API-POST\\MeuERP.Api2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Guilherme-pc\\.nuget\\packages\\dotnetdbf\\7.0.1\\dotnetdbf.7.0.1.nupkg.sha512",
     "C:\\Users\\Guilherme-pc\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.25\\microsoft.aspnetcore.openapi.8.0.25.nupkg.sha512",

@@ -834,11 +834,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Guilherme-pc\\Desktop\\MeuERP.Api2\\MeuERP.Api2.csproj",
+      "projectUniqueName": "C:\\Users\\Guilherme-pc\\Desktop\\API-POST\\MeuERP.Api2.csproj",
       "projectName": "MeuERP.Api2",
-      "projectPath": "C:\\Users\\Guilherme-pc\\Desktop\\MeuERP.Api2\\MeuERP.Api2.csproj",
+      "projectPath": "C:\\Users\\Guilherme-pc\\Desktop\\API-POST\\MeuERP.Api2.csproj",
       "packagesPath": "C:\\Users\\Guilherme-pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Guilherme-pc\\Desktop\\MeuERP.Api2\\obj\\",
+      "outputPath": "C:\\Users\\Guilherme-pc\\Desktop\\API-POST\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Guilherme-pc\\AppData\\Roaming\\NuGet\\NuGet.Config"

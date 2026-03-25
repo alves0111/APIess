@@ -5,10 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Necessário para Encoding.GetEncoding("ISO-8859-1")
 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-// Configuração fortemente tipada + validação no startup
 builder.Services
     .AddOptions<IntegracaoConfig>()
     .Bind(builder.Configuration.GetSection("Integracao"))
@@ -16,35 +14,29 @@ builder.Services
         !string.IsNullOrWhiteSpace(config.DbfPath) &&
         !string.IsNullOrWhiteSpace(config.TempPath),
         "A seção Integracao precisa definir DbfPath e TempPath.")
+    .Validate(config => config.SyncBatchSize > 0 && config.SyncBatchSize <= 5000,
+        "Integracao:SyncBatchSize deve estar entre 1 e 5000.")
     .ValidateOnStart();
 
 builder.Services.AddProblemDetails();
-
-// Serviços
 builder.Services.AddScoped<DbfReaderService>();
+builder.Services.AddScoped<PostgresUpsertService>();
 
-// Cliente 
 builder.Services.AddScoped<ClienteIntegration>();
 builder.Services.AddScoped<ClienteService>();
 
-// Produto
 builder.Services.AddScoped<ProdIntegration>();
 builder.Services.AddScoped<ProdService>();
 
-// Estoque
 builder.Services.AddScoped<EstqIntegration>();
 builder.Services.AddScoped<EstqService>();
 
-// Controllers
 builder.Services.AddControllers();
-
-// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Tratamento global de exceções
 app.UseExceptionHandler(exceptionApp =>
 {
     exceptionApp.Run(async context =>
@@ -55,9 +47,7 @@ app.UseExceptionHandler(exceptionApp =>
             .CreateLogger("GlobalExceptionHandler");
 
         if (exception is not null)
-        {
             logger.LogError(exception, "Erro não tratado durante o processamento da requisição.");
-        }
 
         var statusCode = exception switch
         {
@@ -75,9 +65,7 @@ app.UseExceptionHandler(exceptionApp =>
         var problem = new ProblemDetails
         {
             Status = statusCode,
-            Title = statusCode >= 500
-                ? "Erro interno no servidor."
-                : "Não foi possível processar a solicitação.",
+            Title = statusCode >= 500 ? "Erro interno no servidor." : "Não foi possível processar a solicitação.",
             Detail = exception?.Message,
             Instance = context.Request.Path
         };
@@ -93,9 +81,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
