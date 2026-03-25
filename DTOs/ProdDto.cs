@@ -5,7 +5,7 @@ public class ProdDto
     public string? MARCA { get; set; }
     public string? UNIDADE { get; set; }
     public string? ST { get; set; }
-    public string? CSOSN { get; set; }
+    public int? CSOSN { get; set; }
     public string? COD_FOR { get; set; }
     public string? COD_TIP { get; set; }
     public string? SUB_TIP { get; set; }
@@ -14,13 +14,13 @@ public class ProdDto
     public string? COD_TRIB { get; set; }
     public string? COD_PAT { get; set; }
     public string? COD_BAIXA { get; set; }
-    public string? QTE_BAIXA { get; set; }
+    public decimal? QTE_BAIXA { get; set; }
     public string? COD_GRA { get; set; }
     public string? COD_TAM { get; set; }
-    public string? QTE_GRA { get; set; }
+    public int? QTE_GRA { get; set; }
     public string? CURVA { get; set; }
     public string? CODBAR { get; set; }
-    public string? QTE_CX { get; set; }
+    public decimal? QTE_CX { get; set; }
     public string? ABREEMB { get; set; }
     public string? DIMENSAO { get; set; }
     public string? MOLDE { get; set; }
@@ -32,34 +32,34 @@ public class ProdDto
     public string? COD_DC { get; set; }
     public string? NBM { get; set; }
     public string? CNBS { get; set; }
-    public string? NAT_REC { get; set; }
-    public string? PRODANP { get; set; }
+    public int? NAT_REC { get; set; }
+    public int? PRODANP { get; set; }
     public string? SND_TRIB { get; set; }
-    public string? PESOLIQ { get; set; }
+    public decimal? PESOLIQ { get; set; }
     public string? DEC45490 { get; set; }
     public string? DEC48034 { get; set; }
     public string? DEC48042 { get; set; }
     public string? DEC49113 { get; set; }
     public string? TRIBPADRAO { get; set; }
     public string? TEMPOEXEC { get; set; }
-    public string? PESOBRUTO { get; set; }
+    public decimal? PESOBRUTO { get; set; }
     public string? LEMBR_POSO { get; set; }
-    public string? DIASPOSO { get; set; }
+    public int? DIASPOSO { get; set; }
     public string? CDFORMULA { get; set; }
-    public string? RENDIMENTO { get; set; }
-    public string? FRACAO { get; set; }
+    public decimal? RENDIMENTO { get; set; }
+    public int? FRACAO { get; set; }
     public string? ENQTEDEC { get; set; }
     public string? PORTARIA { get; set; }
-    public string? P_FABRICA { get; set; }
+    public decimal? P_FABRICA { get; set; }
     public string? DUVIDOSO { get; set; }
     public string? COD_ABCFAR { get; set; }
     public string? INATIVO { get; set; }
     public string? ETIQ_PRAT { get; set; }
-    public string? COFINS { get; set; }
-    public string? PIS { get; set; }
+    public decimal? COFINS { get; set; }
+    public decimal? PIS { get; set; }
     public string? STCOFINS { get; set; }
     public string? CSTPCIN { get; set; }
-    public string? ISSCRED { get; set; }
+    public int? ISSCRED { get; set; }
     public string? BALANCA { get; set; }
     public string? PARAM1 { get; set; }
     public string? LPRE { get; set; }
@@ -68,40 +68,40 @@ public class ProdDto
     public string? CDSITE { get; set; }
     public string? CDSITE2 { get; set; }
     public string? SITEPUB { get; set; }
-    public string? SITEQTEMAX { get; set; }
+    public decimal? SITEQTEMAX { get; set; }
     public string? EXPORTADO { get; set; }
     public string? PORTCATPRO { get; set; }
     public string? REDBCST { get; set; }
     public string? TIPO_ITEM { get; set; }
-    public string? COD_GEN { get; set; }
-    public string? COD_LST { get; set; }
-    public string? QSELCPTO { get; set; }
+    public int? COD_GEN { get; set; }
+    public int? COD_LST { get; set; }
+    public int? QSELCPTO { get; set; }
     public string? REGMS { get; set; }
-    public string? ENCOMENDA { get; set; }
-    public string? GETAUTOR { get; set; }
-    public string? PRZENTREGA { get; set; }
-    public string? DISPALM { get; set; }
+    public int? ENCOMENDA { get; set; }
+    public int? GETAUTOR { get; set; }
+    public int? PRZENTREGA { get; set; }
+    public int? DISPALM { get; set; }
     public string? SISP { get; set; }
     public string? CEST { get; set; }
     public string? RASTREIO { get; set; }
-    public string? PGLP { get; set; }
-    public string? PGLN { get; set; }
-    public string? PGLI { get; set; }
-    public string? ADREMICMS { get; set; }
-    public string? DISFISCAL { get; set; }
-    public string? QTEFAT { get; set; }
+    public decimal? PGLP { get; set; }
+    public decimal? PGLN { get; set; }
+    public decimal? PGLI { get; set; }
+    public decimal? ADREMICMS { get; set; }
+    public int? DISFISCAL { get; set; }
+    public decimal? QTEFAT { get; set; }
     public string? UTRIB { get; set; }
-    public string? QTRIB { get; set; }
-    public string? DIASENTREG { get; set; }
+    public decimal? QTRIB { get; set; }
+    public int? DIASENTREG { get; set; }
     public string? NOME_ING { get; set; }
-    public string? IPICOMPRA { get; set; }
-    public string? PCICMST { get; set; }
-    public string? PCFRETE { get; set; }
-    public string? DESPADM { get; set; }
-    public string? ALIQ_IRRF { get; set; }
+    public decimal? IPICOMPRA { get; set; }
+    public decimal? PCICMST { get; set; }
+    public decimal? PCFRETE { get; set; }
+    public decimal? DESPADM { get; set; }
+    public decimal? ALIQ_IRRF { get; set; }
     public string? CNAE { get; set; }
-    public string? HASCARAC { get; set; }
-    public string? DATA_INCL { get; set; }
-    public string? DATA_ALT { get; set; }
-    public string? N_ALT { get; set; }
+    public int? HASCARAC { get; set; }
+    public DateOnly? DATA_INCL { get; set; }
+    public DateOnly? DATA_ALT { get; set; }
+    public int? N_ALT { get; set; }
 }

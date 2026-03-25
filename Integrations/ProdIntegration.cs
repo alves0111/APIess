@@ -1,19 +1,19 @@
 using Microsoft.Extensions.Logging;
 
-public class ClienteIntegration
+public class ProdIntegration
 {
     private readonly DbfReaderService _dbf;
-    private readonly ILogger<ClienteIntegration> _logger;
+    private readonly ILogger<ProdIntegration> _logger;
 
-    public ClienteIntegration(
+    public ProdIntegration(
         DbfReaderService dbf,
-        ILogger<ClienteIntegration> logger)
+        ILogger<ProdIntegration> logger)
     {
         _dbf = dbf;
         _logger = logger;
     }
 
-    public List<ClientDto> BuscarClientes(int skip = 0, int take = 200)
+    public List<ProdDto> BuscarProdutos(int skip = 0, int take = 200)
     {
         if (skip < 0)
         {
@@ -25,30 +25,30 @@ public class ClienteIntegration
             throw new ArgumentOutOfRangeException(nameof(take), "O parâmetro take deve estar entre 1 e 1000.");
         }
 
-        var clientes = new List<ClientDto>(take);
+        var produtos = new List<ProdDto>(take);
         var index = 0;
 
-        foreach (var row in _dbf.LerTabela("CLIENTES"))
+        foreach (var row in _dbf.LerTabela("PRODUTOS"))
         {
             if (index++ < skip)
             {
                 continue;
             }
 
-            clientes.Add(DbfMapper.MapRow<ClientDto>(row));
+            produtos.Add(DbfMapper.MapRow<ProdDto>(row));
 
-            if (clientes.Count >= take)
+            if (produtos.Count >= take)
             {
                 break;
             }
         }
 
         _logger.LogInformation(
-            "Consulta de clientes concluída. Skip: {Skip}. Take: {Take}. Retornados: {Retornados}",
+            "Consulta de produtos concluída. Skip: {Skip}. Take: {Take}. Retornados: {Retornados}",
             skip,
             take,
-            clientes.Count);
+            produtos.Count);
 
-        return clientes;
+        return produtos;
     }
 }

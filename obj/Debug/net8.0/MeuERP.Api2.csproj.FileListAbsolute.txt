@@ -80,3 +80,4 @@ C:\Users\Guilherme-pc\Desktop\MeuERP.Api2\bin\Debug\net8.0\DotNetDBF.dll
 C:\Users\Guilherme-pc\Desktop\MeuERP.Api2\bin\Debug\net8.0\NDbfReader.dll
 C:\Users\Guilherme-pc\Desktop\MeuERP.Api2\bin\Debug\net8.0\Npgsql.dll
 C:\Users\Guilherme-pc\Desktop\MeuERP.Api2\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Guilherme-pc\Desktop\MeuERP.Api2\obj\Debug\net8.0\MeuERP.Api2.sourcelink.json

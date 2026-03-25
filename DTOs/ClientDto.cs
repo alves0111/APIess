@@ -3,7 +3,7 @@ public class ClientDto
     public string? COD_CLI { get; set; }
     public string? NOME { get; set; }
     public string? FANTASIA { get; set; }
-    public string? DATANASC { get; set; }
+    public DateOnly? DATANASC { get; set; }
     public string? ENDERECO { get; set; }
     public string? XCPL { get; set; }
     public string? BAIRRO { get; set; }
@@ -15,7 +15,7 @@ public class ClientDto
     public string? CDUFIBGE { get; set; }
     public string? CDPAIS { get; set; }
     public string? PTOREF { get; set; }
-    public string? ALIQ { get; set; }
+    public decimal? ALIQ { get; set; }
     public string? COD_TRIB { get; set; }
     public string? ATIVAFF { get; set; }
     public string? CEP { get; set; }
@@ -24,8 +24,8 @@ public class ClientDto
     public string? INS_MUN { get; set; }
     public string? ISUFRAMA { get; set; }
     public string? CNAE { get; set; }
-    public string? LIM_CRED { get; set; }
-    public string? LIM_MES { get; set; }
+    public int? LIM_CRED { get; set; }
+    public int? LIM_MES { get; set; }
     public string? FONE { get; set; }
     public string? FAX { get; set; }
     public string? E_MAIL { get; set; }
@@ -36,44 +36,44 @@ public class ClientDto
     public string? ENDCOM { get; set; }
     public string? FONECOM { get; set; }
     public string? COD_BLOQ { get; set; }
-    public string? DT_BLOQ { get; set; }
+    public DateOnly? DT_BLOQ { get; set; }
     public string? OBS { get; set; }
     public string? MALA_DIR { get; set; }
     public string? EMIS_CART { get; set; }
-    public string? DTVALCART { get; set; }
-    public string? DT_COMPRA { get; set; }
-    public string? DT_INSTAL { get; set; }
-    public string? DT_GARANT { get; set; }
+    public DateOnly? DTVALCART { get; set; }
+    public DateOnly? DT_COMPRA { get; set; }
+    public DateOnly? DT_INSTAL { get; set; }
+    public DateOnly? DT_GARANT { get; set; }
     public string? COD_USU { get; set; }
-    public string? TX_SERV { get; set; }
+    public decimal? TX_SERV { get; set; }
     public string? DIA_PAG { get; set; }
     public string? TIPO_DOC { get; set; }
     public string? COD_BAN { get; set; }
     public string? COD_PRO { get; set; }
     public string? LASTREAJ { get; set; }
-    public string? COMISSAO { get; set; }
-    public string? VC { get; set; }
-    public string? QP { get; set; }
+    public decimal? COMISSAO { get; set; }
+    public decimal? VC { get; set; }
+    public int? QP { get; set; }
     public string? CATEGORIA { get; set; }
-    public string? DESCTO { get; set; }
-    public string? DESC_REC { get; set; }
-    public string? PRAZO { get; set; }
-    public string? DIA_INI1 { get; set; }
-    public string? DIA_FIN1 { get; set; }
-    public string? DIA_INI2 { get; set; }
-    public string? DIA_FIN2 { get; set; }
-    public string? DIAVENC { get; set; }
+    public decimal? DESCTO { get; set; }
+    public decimal? DESC_REC { get; set; }
+    public int? PRAZO { get; set; }
+    public int? DIA_INI1 { get; set; }
+    public int? DIA_FIN1 { get; set; }
+    public int? DIA_INI2 { get; set; }
+    public int? DIA_FIN2 { get; set; }
+    public int? DIAVENC { get; set; }
     public string? THISMES { get; set; }
-    public string? DIAVENC2 { get; set; }
-    public string? DOWNCOMI { get; set; }
-    public string? DATA_INCL { get; set; }
-    public string? DATA_ALT { get; set; }
-    public string? N_ALT { get; set; }
+    public int? DIAVENC2 { get; set; }
+    public decimal? DOWNCOMI { get; set; }
+    public DateOnly? DATA_INCL { get; set; }
+    public DateOnly? DATA_ALT { get; set; }
+    public int? N_ALT { get; set; }
     public string? PROFISSAO { get; set; }
     public string? CONJUGE { get; set; }
     public string? CONJCPF { get; set; }
     public string? CONJRG { get; set; }
-    public string? CONJNASC { get; set; }
+    public DateOnly? CONJNASC { get; set; }
     public string? CONJPROF { get; set; }
     public string? REFCOM1 { get; set; }
     public string? REFCOM2 { get; set; }
@@ -84,8 +84,8 @@ public class ClientDto
     public string? REFPES1 { get; set; }
     public string? REFPES2 { get; set; }
     public string? REFPES3 { get; set; }
-    public string? RENDAPES { get; set; }
-    public string? RENDAFAM { get; set; }
+    public decimal? RENDAPES { get; set; }
+    public decimal? RENDAFAM { get; set; }
     public string? ENTENDER { get; set; }
     public string? ENTBAIRRO { get; set; }
     public string? ENTCIDADE { get; set; }
@@ -99,17 +99,17 @@ public class ClientDto
     public string? COBCEP { get; set; }
     public string? COBFONE { get; set; }
     public string? RESTIPO { get; set; }
-    public string? RESALUG { get; set; }
-    public string? RESTEMPO { get; set; }
-    public string? ADMISSAO { get; set; }
+    public int? RESALUG { get; set; }
+    public decimal? RESTEMPO { get; set; }
+    public DateOnly? ADMISSAO { get; set; }
     public string? CPTS { get; set; }
     public string? MATRICULA { get; set; }
     public string? PAICPF { get; set; }
     public string? PAIRG { get; set; }
-    public string? PAINASC { get; set; }
+    public DateOnly? PAINASC { get; set; }
     public string? MAECPF { get; set; }
     public string? MAERG { get; set; }
-    public string? MAENASC { get; set; }
+    public DateOnly? MAENASC { get; set; }
     public string? CONTATO1 { get; set; }
     public string? CONTATO2 { get; set; }
     public string? BANCO { get; set; }
@@ -121,31 +121,33 @@ public class ClientDto
     public string? ISCONSUMO { get; set; }
     public string? ISORGPUB { get; set; }
     public string? ISINDUST { get; set; }
-    public string? NFEMODDANF { get; set; }
+    public int? NFEMODDANF { get; set; }
     public string? STCOFINS { get; set; }
     public string? INATIVO { get; set; }
     public string? APOSENTADO { get; set; }
     public string? PESSOA { get; set; }
-    public string? ESTCIVIL { get; set; }
-    public string? TXFACTOR { get; set; }
+    public int? ESTCIVIL { get; set; }
+    public decimal? TXFACTOR { get; set; }
     public string? TIPOINDIC { get; set; }
     public string? INDICADOR { get; set; }
-    public string? ALIQISS { get; set; }
+    public decimal? ALIQISS { get; set; }
     public string? ISSR { get; set; }
-    public string? DESCFIN { get; set; }
+    public decimal? DESCFIN { get; set; }
     public string? NATURAL { get; set; }
     public string? COD_COND { get; set; }
     public string? COD_TRN { get; set; }
-    public string? ACRE_VEND { get; set; }
-    public string? DTCONTATO { get; set; }
+    public decimal? ACRE_VEND { get; set; }
+    public DateOnly? DTCONTATO { get; set; }
     public string? CODCONV { get; set; }
-    public string? VR_FRETE { get; set; }
+    public decimal? VR_FRETE { get; set; }
     public string? CONTRIBU { get; set; }
     public string? PORTCATPRO { get; set; }
     public string? NFEOBS { get; set; }
-    public string? DIASPROT { get; set; }
-    public string? PROTESTO { get; set; }
+    public int? DIASPROT { get; set; }
+    public int? PROTESTO { get; set; }
     public string? CONSELHO { get; set; }
     public string? CONTADEB { get; set; }
     public string? CONTACRE { get; set; }
+    public string? DPRORVENC { get; set; }
+    public int? DESONERA { get; set; }
 }

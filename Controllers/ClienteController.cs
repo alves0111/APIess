@@ -12,9 +12,16 @@ public class ClienteController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult Get()
+    public IActionResult Get([FromQuery] int skip = 0, [FromQuery] int take = 200)
     {
-        var clientes = _service.ObterClientes();
-        return Ok(clientes);
+        var clientes = _service.ObterClientes(skip, take);
+
+        return Ok(new
+        {
+            skip,
+            take,
+            count = clientes.Count,
+            items = clientes
+        });
     }
 }

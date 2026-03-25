@@ -1,19 +1,19 @@
 using Microsoft.Extensions.Logging;
 
-public class ClienteIntegration
+public class EstqIntegration
 {
     private readonly DbfReaderService _dbf;
-    private readonly ILogger<ClienteIntegration> _logger;
+    private readonly ILogger<EstqIntegration> _logger;
 
-    public ClienteIntegration(
+    public EstqIntegration(
         DbfReaderService dbf,
-        ILogger<ClienteIntegration> logger)
+        ILogger<EstqIntegration> logger)
     {
         _dbf = dbf;
         _logger = logger;
     }
 
-    public List<ClientDto> BuscarClientes(int skip = 0, int take = 200)
+    public List<EstqDto> BuscarEstq(int skip = 0, int take = 200)
     {
         if (skip < 0)
         {
@@ -25,30 +25,30 @@ public class ClienteIntegration
             throw new ArgumentOutOfRangeException(nameof(take), "O parâmetro take deve estar entre 1 e 1000.");
         }
 
-        var clientes = new List<ClientDto>(take);
+        var estoques = new List<EstqDto>(take);
         var index = 0;
 
-        foreach (var row in _dbf.LerTabela("CLIENTES"))
+        foreach (var row in _dbf.LerTabela("ESTOQUES"))
         {
             if (index++ < skip)
             {
                 continue;
             }
 
-            clientes.Add(DbfMapper.MapRow<ClientDto>(row));
+            estoques.Add(DbfMapper.MapRow<EstqDto>(row));
 
-            if (clientes.Count >= take)
+            if (estoques.Count >= take)
             {
                 break;
             }
         }
 
         _logger.LogInformation(
-            "Consulta de clientes concluída. Skip: {Skip}. Take: {Take}. Retornados: {Retornados}",
+            "Consulta de estoque concluída. Skip: {Skip}. Take: {Take}. Retornados: {Retornados}",
             skip,
             take,
-            clientes.Count);
+            estoques.Count);
 
-        return clientes;
+        return estoques;
     }
 }
